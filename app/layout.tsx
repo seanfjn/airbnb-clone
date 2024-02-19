@@ -3,6 +3,9 @@ import Navbar from "./components/navbar/Navbar";
 //Nunito is a a font package
 import { Inter, Nunito} from "next/font/google";
 import "./globals.css";
+import RegisterModal from "./components/modals/RegisterModal";
+import ToasterProvider from "./providers/ToasterProvider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,13 +21,15 @@ const font = Nunito({
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar />
+          <ToasterProvider />
+          <RegisterModal />
+          <Navbar />
         {children}
         </body>
     </html>
